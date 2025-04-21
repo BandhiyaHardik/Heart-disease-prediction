@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        /* Center the title */
+        h1 {
+            text-align: center;
+        }
+
+        /* Add styles to the form */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        /* Style input fields */
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Style the submit button and center it */
+        form button[type="submit"] {
+            display: block;
+            margin: 0 auto;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Hover and focus styles for input fields and button */
+        form input[type="number"]:hover,
+        form input[type="number"]:focus,
+        form button[type="submit"]:hover,
+        form button[type="submit"]:focus {
+            border: 1px solid #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+        }
+
+        /* Center the prediction result */
+        #result {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heart Disease Prediction</h1>
+    <form method="POST" action="/predict">
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+
+        <label for="gender">Gender (0 for Female, 1 for Male):</label>
+        <input type="number" name="gender" required><br>
+
+        <label for="chest-pain">Chest Pain Type:</label>
+        <input type="number" name="chest-pain" required><br>
+
+        <label for="rbp">Resting Blood Pressure (mm Hg):</label>
+        <input type="number" name="rbp" required><br>
+
+        <label for="chol">Cholesterol (mg/dl):</label>
+        <input type="number" name="chol" required><br>
+
+        <label for="fbs">Fasting Blood Sugar > 120 mg/dl (1 for True, 0 for False):</label>
+        <input type="number" name="fbs" required><br>
+
+        <label for="restecg">Resting Electrocardiographic Results:</label>
+        <input type="number" name="restecg" required><br>
+
+        <label for="thalach">Maximum Heart Rate Achieved:</label>
+        <input type="number" name="thalach" required><br>
+
+        <label for="exang">Exercise-Induced Angina (1 for Yes, 0 for No):</label>
+        <input type="number" name="exang" required><br>
+
+        <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest:</label>
+        <input type="number" name="oldpeak" step="0.01" required><br>
+
+        <label for="slope">Slope of the Peak Exercise ST Segment:</label>
+        <input type="number" name="slope" required><br>
+
+        <label for="ca">Number of Major Vessels Colored by Fluoroscopy:</label>
+        <input type="number" name="ca" required><br>
+
+        <label for="thal">Thalassemia (0, 1, 2, 3):</label>
+        <input type="number" name="thal" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    
+    {% if prediction_result %}
+        <h2>Prediction Result:</h2>
+        <p>{{ prediction_result }}</p>
+    {% endif %}
+</body>
+</html>
